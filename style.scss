@@ -1,9 +1,15 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
   // border: 1px solid white;
 }
 
+html {
+  // for back to top button animation
+  scroll-behavior: smooth;
+}
 body {
   background-color: rgb(0, 0, 0);
   color: #fff;
@@ -46,17 +52,28 @@ button.btn {
   }
 }
 
-// .container {
-//   width: 80%;
-//   margin: 0 auto;
-// }
-
-
 // this is header
 
 header {
   height: 100vh;
-
+  .backToTop {
+    width: 50px;
+    height: 50px;
+    background-color: gray;
+    border-radius: 50%;
+    position: fixed;
+    bottom: 100px;
+    left:1300px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.7s;
+    z-index: 999;
+    border: 1px solid white;
+    &:hover {
+      background-color: black;
+    }
+  }
   .navigation {
     display: flex;
     justify-content: space-between;
@@ -77,11 +94,19 @@ header {
       list-style: none;
       padding: 5px 10px;
       cursor: pointer;
-
+      &:after {
+        display:block;
+        content: '';
+        border-bottom: solid 3px white;  
+        transform: scaleX(0);  
+        transition: transform 250ms ease-in-out;
+      }
       &:hover {
         opacity: 0.5;
       }
-
+      &:hover:after { transform: scaleX(1); }
+      &.fromRight:after{ transform-origin:100% 50%; }
+      &.fromLeft:after{  transform-origin:  0% 50%; }
     }
 
   }
@@ -169,7 +194,7 @@ section.project1 {
     height: 100vh;
     width: 50%;
     max-width: 50%;
-    background-image: url("/assets/work1.jpg");
+    background-image: url("../assets/work1.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -212,7 +237,7 @@ section.project2 {
     height: 100vh;
     width: 50%;
     max-width: 50%;
-    background-image: url("/assets/work2.png");
+    background-image: url("../assets/work2.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -246,7 +271,7 @@ section.project3 {
     height: 100vh;
     width: 50%;
     max-width: 50%;
-    background-image: url("/assets/work3.png");
+    background-image: url("../assets/work3.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -304,3 +329,54 @@ section.project3 {
   }
 
 }
+
+// about.html
+// header
+header {
+  .intro {
+    display: flex;
+    justify-content: space-evenly;
+    .description {
+      max-width: 40%;
+      padding: 5%;
+      line-height: 50px;
+      font-size: 20px;
+    }
+    .portraitAbout{
+      max-width: 40%;
+      padding: 5%;
+      img {
+        border-top-right-radius: 50%;
+        border-top-left-radius: 50%;
+      }
+    }
+  }
+  hr {
+    max-width: 80%;
+    margin: 0 auto;
+    margin-top: 1%;
+  }   
+}
+main {
+  .container {
+    max-width: 80%;
+    margin: 0 auto;
+    .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .col-lg-3{
+        max-width: 33.333%;
+        font-size: 16px;
+      }
+    }
+  }
+  hr {
+    max-width: 100%;
+    margin: 0 auto;
+    margin-top: 3%;
+  }
+}
+
+
+

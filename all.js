@@ -24,6 +24,25 @@ $(document).ready(function(){
             $(".square2").css('transform', 'scale(0.8)');
         }
       });
+    
+})
 
-    console.log("no")
+    //   back to top 
+const backToTop = document.querySelector('.backToTop')
+    backToTop.style.opacity = 0;
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+
+  if (document.body.scrollTop > 40 || document.documentElement.scrollTop > 40) {
+    backToTop.style.opacity = 1;
+  } else {
+    backToTop.style.opacity = 0;
+  }
+}
+
+backToTop.addEventListener('click',function(){
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 })
